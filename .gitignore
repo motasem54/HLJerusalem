@@ -1,0 +1,23 @@
+# Config file with sensitive data
+config.php
+
+# Uploads directory
+uploads/
+
+# IDE files
+.vscode/
+.idea/
+*.sublime-*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Log files
+*.log
+error_log
+
+# Temporary files
+*.tmp
+*.temp
+*.cache
