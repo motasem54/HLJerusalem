@@ -1,245 +1,261 @@
 # H.L. Jerusalem Stone & Marble Company Website
 
-![H.L. Jerusalem](assets/images/logo.png)
+![H.L. Jerusalem Logo](assets/images/logo.jpg)
 
-Professional website for **H.L. Jerusalem Stone & Marble Company** - Premium natural stone products from Palestine since 1979.
+## 🏛️ About The Project
 
-## 🌟 Features
+A luxurious, professional website for H.L. Jerusalem Stone and Marble Company - one of Palestine's leading manufacturers and exporters of Jerusalem Gold Stone. The website features a modern design with elegant brown, black, and gold color scheme, along with a comprehensive admin dashboard for content management.
+
+## ✨ Features
 
 ### Frontend
-- **Luxury Design**: Brown, Black, and Gold color scheme for premium brand identity
-- **Responsive Layout**: Fully responsive design for all devices
-- **Dynamic Content**: Products and projects loaded dynamically from database
-- **Smooth Animations**: Professional animations and transitions
-- **Multi-language Support**: English (primary) with Arabic support in admin panel
+- **Elegant Design**: Professional interface with brown/black/gold color palette
+- **Responsive Layout**: Optimized for all devices (desktop, tablet, mobile)
+- **Multi-Section Homepage**:
+  - Hero section with company introduction
+  - Products showcase (Blocks, Slabs, Tiles, Cut to Size)
+  - Company story and international branches
+  - Projects gallery
+  - Contact information
+- **Smooth Animations**: CSS3 animations and transitions
+- **SEO Optimized**: Proper meta tags and semantic HTML
 
-### Admin Panel
-- **Complete Control**: Full management of categories, products, and projects
-- **User-Friendly Interface**: Intuitive dashboard with quick actions
-- **Image Upload**: Easy image management for all content
-- **Statistics Dashboard**: Real-time overview of content counts
-- **Secure Authentication**: Password-protected admin access
+### Admin Dashboard
+- **Category Management**: Create, edit, delete stone/marble categories
+- **Product Management**: Full CRUD operations for products
+- **Image Upload**: Multiple image support for products
+- **Project Gallery**: Manage showcase projects
+- **Statistics Dashboard**: Overview of categories, products, and projects
+- **Secure Authentication**: Login system with session management
 
-## 🛠️ Technology Stack
+## 🛠️ Technologies Used
 
-- **Backend**: PHP 8.0+
-- **Database**: MySQL 5.7+
-- **Frontend**: HTML5, CSS3, Vanilla JavaScript
-- **Design**: Custom CSS with CSS Variables
-- **Fonts**: Google Fonts (Lato)
-
-## 📋 Requirements
-
-- PHP 8.0 or higher
-- MySQL 5.7 or higher
-- Apache/Nginx web server
-- PHP Extensions: PDO, PDO_MySQL, GD (for image handling)
-
-## 🚀 Installation
-
-### 1. Clone the Repository
-```bash
-git clone https://github.com/motasem54/HLJerusalem.git
-cd HLJerusalem
-```
-
-### 2. Database Setup
-```bash
-# Create database and import schema
-mysql -u root -p < database.sql
-```
-
-Or manually:
-1. Create a new database named `hljerusalem`
-2. Import the `database.sql` file
-3. Default admin credentials will be created automatically
-
-### 3. Configuration
-Edit `config.php` with your database credentials:
-```php
-define('DB_HOST', 'localhost');
-define('DB_NAME', 'hljerusalem');
-define('DB_USER', 'your_username');
-define('DB_PASS', 'your_password');
-```
-
-### 4. File Permissions
-```bash
-chmod 755 uploads/
-chmod 755 uploads/categories/
-chmod 755 uploads/products/
-chmod 755 uploads/projects/
-```
-
-### 5. Access the Website
-- **Frontend**: `http://localhost/HLJerusalem/`
-- **Admin Panel**: `http://localhost/HLJerusalem/admin/`
-
-## 🔐 Default Admin Credentials
-
-- **Username**: `admin`
-- **Password**: `admin123`
-
-⚠️ **Important**: Change the default password immediately after first login!
+- **Backend**: PHP 8.x
+- **Database**: MySQL 8.x
+- **Frontend**: HTML5, CSS3, JavaScript
+- **Design**: Custom CSS with modern animations
+- **Architecture**: MVC-inspired structure
 
 ## 📁 Project Structure
 
 ```
 HLJerusalem/
-├── admin/                  # Admin panel
-│   ├── assets/
-│   │   └── css/
-│   │       └── admin.css   # Admin-specific styles
-│   ├── includes/
-│   │   └── sidebar.php     # Reusable sidebar
-│   ├── index.php           # Admin dashboard
-│   ├── login.php           # Admin login
-│   ├── logout.php          # Logout handler
-│   ├── categories.php      # Category management
-│   ├── products.php        # Product management
-│   ├── projects.php        # Project management
-│   └── settings.php        # Settings page
-├── api/                    # API endpoints
-│   ├── get-products.php    # Fetch products
-│   └── get-projects.php    # Fetch projects
-├── assets/                 # Frontend assets
+│
+├── admin/                    # Admin dashboard
+│   ├── index.php            # Dashboard home
+│   ├── login.php            # Admin authentication
+│   ├── categories.php       # Category management
+│   ├── products.php         # Product management
+│   ├── projects.php         # Project gallery management
+│   ├── logout.php           # Session logout
+│   └── css/
+│       └── admin.css        # Admin panel styles
+│
+├── includes/                 # Shared components
+│   ├── config.php           # Database configuration
+│   ├── header.php           # Site header
+│   └── footer.php           # Site footer
+│
+├── assets/
 │   ├── css/
-│   │   └── style.css       # Main stylesheet
+│   │   └── style.css        # Main stylesheet
 │   ├── js/
-│   │   └── main.js         # Frontend JavaScript
-│   └── images/             # Static images
-├── uploads/                # User uploads
-│   ├── categories/
-│   ├── products/
-│   └── projects/
-├── config.php              # Configuration file
-├── database.sql            # Database schema
-├── index.php               # Homepage
-└── README.md               # This file
+│   │   └── main.js          # JavaScript functionality
+│   └── images/              # Image uploads
+│
+├── api/                      # API endpoints
+│   ├── categories.php       # Category operations
+│   ├── products.php         # Product operations
+│   └── projects.php         # Project operations
+│
+├── index.php                 # Homepage
+├── about.php                 # About company page
+├── products.php              # Products catalog
+├── projects.php              # Projects showcase
+├── contact.php               # Contact information
+└── database.sql              # Database schema
 ```
 
-## 🎨 Color Palette
+## 🚀 Installation
 
-The website uses a luxury color scheme:
+### Prerequisites
+- PHP 8.0 or higher
+- MySQL 8.0 or higher
+- Apache/Nginx web server
+- PHP GD extension (for image processing)
 
-- **Primary Gold**: `#C9A961`
-- **Dark Gold**: `#A68B4E`
-- **Light Gold**: `#E5D4A3`
-- **Primary Brown**: `#3E2723`
-- **Secondary Brown**: `#5D4037`
-- **Primary Black**: `#1A1A1A`
-- **Secondary Black**: `#2C2C2C`
-- **Off White**: `#F5F5F0`
+### Setup Steps
 
-## 📱 Admin Panel Features
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/motasem54/HLJerusalem.git
+   cd HLJerusalem
+   ```
 
-### Dashboard
-- Overview statistics (categories, products, projects)
-- Quick action buttons
-- Direct access to all management pages
+2. **Create database**
+   ```bash
+   mysql -u root -p
+   CREATE DATABASE hljerusalem;
+   USE hljerusalem;
+   SOURCE database.sql;
+   ```
 
-### Categories Management
-- Add/Edit/Delete stone and marble categories
-- Bilingual support (English & Arabic)
-- Image upload for each category
-- Display order customization
-- Active/Inactive status control
+3. **Configure database connection**
+   
+   Edit `includes/config.php`:
+   ```php
+   define('DB_HOST', 'localhost');
+   define('DB_USER', 'your_username');
+   define('DB_PASS', 'your_password');
+   define('DB_NAME', 'hljerusalem');
+   ```
 
-### Products Management
-- Complete product information management
-- Category assignment
-- Multiple images per product
-- Color range specification
-- Available types (Blocks, Slabs, Tiles, Cut to size)
-- Featured products highlighting
-- Display order control
+4. **Set permissions**
+   ```bash
+   chmod 755 assets/images/
+   chmod 755 admin/uploads/
+   ```
 
-### Projects Management
-- Project portfolio management
-- Location and year tracking
-- Multiple project images
-- Bilingual descriptions
-- Display order customization
+5. **Access the website**
+   - Frontend: `http://localhost/HLJerusalem/`
+   - Admin: `http://localhost/HLJerusalem/admin/`
+   - Default credentials: `admin` / `admin123` (⚠️ Change immediately!)
 
-## 🌐 Frontend Sections
+## 🎨 Design Philosophy
 
-1. **Hero Section**: Stunning full-screen hero with company tagline
-2. **About Section**: Company history and heritage since 1979
-3. **Statistics**: Key numbers showcase (establishment year, quarry area, production)
-4. **Global Presence**: International investments and partnerships
-5. **Products**: Dynamic product showcase
-6. **Projects**: Featured projects portfolio
-7. **Contact**: Complete contact information with management team details
+### Color Palette
+- **Primary Gold**: `#C9A961` - Represents luxury and quality
+- **Dark Brown**: `#3E2723` - Professional and elegant
+- **Rich Black**: `#1A1A1A` - Modern and sophisticated
+- **Accent Gold**: `#D4AF37` - Highlights and CTAs
+- **Light Cream**: `#F5F5DC` - Backgrounds and subtle accents
 
-## 🔧 Customization
+### Typography
+- **Headings**: 'Playfair Display' - Elegant serif font
+- **Body**: 'Lato' - Clean, professional sans-serif
+- **Accents**: 'Cinzel' - Luxury decorative font
 
-### Changing Colors
-Edit CSS variables in `assets/css/style.css`:
-```css
-:root {
-    --primary-gold: #C9A961;
-    --primary-brown: #3E2723;
-    /* ... other colors ... */
-}
-```
+## 📊 Database Schema
 
-### Adding New Admin Users
+### Categories Table
 ```sql
-INSERT INTO admin_users (username, password, email, full_name) 
-VALUES ('newadmin', '$2y$10$...', 'admin@example.com', 'Admin Name');
+- id (INT, PRIMARY KEY, AUTO_INCREMENT)
+- name_en (VARCHAR 255)
+- name_ar (VARCHAR 255)
+- description_en (TEXT)
+- description_ar (TEXT)
+- image (VARCHAR 255)
+- display_order (INT)
+- created_at (TIMESTAMP)
 ```
 
-Note: Use `password_hash('your_password', PASSWORD_DEFAULT)` in PHP to generate the password hash.
+### Products Table
+```sql
+- id (INT, PRIMARY KEY, AUTO_INCREMENT)
+- category_id (INT, FOREIGN KEY)
+- name_en (VARCHAR 255)
+- name_ar (VARCHAR 255)
+- description_en (TEXT)
+- description_ar (TEXT)
+- main_image (VARCHAR 255)
+- created_at (TIMESTAMP)
+```
 
-## 📊 Database Tables
-
-- **categories**: Stone and marble categories
-- **products**: Product listings
-- **product_images**: Product image gallery
-- **projects**: Project portfolio
-- **project_images**: Project image gallery
-- **admin_users**: Admin authentication
-- **company_info**: Company information settings
+### Projects Table
+```sql
+- id (INT, PRIMARY KEY, AUTO_INCREMENT)
+- title_en (VARCHAR 255)
+- title_ar (VARCHAR 255)
+- description_en (TEXT)
+- description_ar (TEXT)
+- location (VARCHAR 255)
+- image (VARCHAR 255)
+- completed_date (DATE)
+- created_at (TIMESTAMP)
+```
 
 ## 🔒 Security Features
 
-- Password hashing with bcrypt
-- Session-based authentication
-- SQL injection protection (prepared statements)
-- XSS protection (output escaping)
+- SQL injection prevention using prepared statements
+- XSS protection through input sanitization
+- CSRF token implementation
+- Secure session management
+- Password hashing (use bcrypt/argon2)
 - File upload validation
-- Admin-only access control
+- Admin access control
 
-## 🚀 Performance
+## 🌐 Company Information
 
-- Optimized CSS with minimal dependencies
-- Vanilla JavaScript (no framework overhead)
-- Efficient database queries
-- Image optimization recommended for uploads
-- Browser caching for static assets
+**H.L. Jerusalem Stone and Marble**
+- **Founded**: 1979
+- **Location**: Ein Sarah St. Hebron, Palestine
+- **Email**: info@palstone.com
+- **Phone**: +970 2 2291403
+- **Fax**: +970 2 2253133
 
-## 🌍 Browser Support
+### International Branches
+- 🇰🇷 **South Korea**: H.L Jerusalem Sara
+- 🇹🇷 **Turkey**: H.L. Jerusalem Madencilik (990,000 m² quarry)
+- 🇯🇴 **Jordan**: H.L. Jerusalem Tala Bay
 
-- Chrome (latest)
-- Firefox (latest)
-- Safari (latest)
-- Edge (latest)
-- Opera (latest)
+### Management Team
+- **General Manager**: Mr. Fahed Ghaith - 00970-599373163
+- **Director Manager**: Mr. Nimer Ghaith - 00972-598881778
+- **Marketing Manager**: Miss Ola Ghaith - 00970-595188753
+
+## 📈 Production Capacity
+
+- **Monthly Production**: 20,000 m²
+- **Annual Quarry Output**: 25,000 m³
+- **Production Lines**: 5 Italian advanced technology lines
+- **Quarry Size (Turkey)**: 990,000 m²
+
+## 🎯 Product Range
+
+### Stone Types
+- Jerusalem Gold Stone
+- Cream Stone (various shades)
+- White Stone
+- Red Stone
+- Grey Stone
+- Yellow Stone
+
+### Product Forms
+- **Blocks**: Raw quarried blocks
+- **Slabs**: Large format processed slabs
+- **Tiles**: Standard and custom tile sizes
+- **Cut to Size**: Custom dimensions per project
+
+## 🚧 Roadmap
+
+- [ ] Multi-language support (Arabic/English switcher)
+- [ ] Online quotation system
+- [ ] 3D stone visualizer
+- [ ] Customer portal
+- [ ] Product comparison tool
+- [ ] Advanced search and filtering
+- [ ] Export product catalogs (PDF)
+- [ ] Integration with shipping calculators
+
+## 🤝 Contributing
+
+This is a private commercial project for H.L. Jerusalem Stone and Marble Company.
 
 ## 📝 License
 
-This project is proprietary software developed for H.L. Jerusalem Stone & Marble Company.
+Proprietary - All rights reserved by H.L. Jerusalem Stone and Marble Company © 2026
 
 ## 👨‍💻 Developer
 
-Developed with ❤️ for H.L. Jerusalem Stone & Marble Company
+Developed by **Motasem** - Full Stack Developer
+- GitHub: [@motasem54](https://github.com/motasem54)
 
 ## 📞 Support
 
 For technical support or inquiries:
-- **Email**: info@palstone.com
-- **Phone**: +970 2 2291403
+- Email: info@palstone.com
+- Phone: +970 2 2291403
 
 ---
 
-**H.L. Jerusalem Stone & Marble** - *Excellence in Natural Stone Since 1979*
+**Made with ❤️ in Palestine** 🇵🇸
