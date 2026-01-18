@@ -1,171 +1,94 @@
 <?php
-require_once 'includes/config.php';
+require_once 'config/config.php';
 require_once 'includes/header.php';
 
-// Fetch all projects
-$stmt = $conn->prepare("SELECT * FROM projects ORDER BY completed_date DESC, created_at DESC");
-$stmt->execute();
-$projects = $stmt->fetchAll(PDO::FETCH_ASSOC);
+// Pagination
+$page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+$per_page = 9;
+$offset = ($page - 1) * $per_page;
+
+// Get total count
+$total = $db->query("SELECT COUNT(*) as total FROM projects WHERE is_active = 1")->fetch()['total'];
+$total_pages = ceil($total / $per_page);
+
+// Get projects
+$stmt = $db->prepare("
+    SELECT * FROM projects 
+    WHERE is_active = 1 
+    ORDER BY display_order ASC, created_at DESC 
+    LIMIT ? OFFSET ?
+");
+$stmt->execute([$per_page, $offset]);
+$projects = $stmt->fetchAll();
 ?>
 
-<style>
-.projects-hero {
-    background: linear-gradient(135deg, #1A1A1A 0%, #3E2723 100%);
-    padding: 120px 20px 80px;
-    text-align: center;
-    color: #fff;
-}
-
-.projects-hero h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: 3.5rem;
-    color: #C9A961;
-    margin-bottom: 20px;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-}
-
-.projects-hero p {
-    font-size: 1.3rem;
-    color: #F5F5DC;
-    max-width: 800px;
-    margin: 0 auto;
-    line-height: 1.8;
-}
-
-.projects-container {
-    max-width: 1400px;
-    margin: 80px auto;
-    padding: 0 20px;
-}
-
-.projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-    gap: 40px;
-    margin-top: 60px;
-}
-
-.project-card {
-    background: #fff;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
-    transition: all 0.4s ease;
-    position: relative;
-}
-
-.project-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 60px rgba(201, 169, 97, 0.2);
-}
-
-.project-image {
-    width: 100%;
-    height: 350px;
-    object-fit: cover;
-    transition: transform 0.5s ease;
-}
-
-.project-card:hover .project-image {
-    transform: scale(1.05);
-}
-
-.project-content {
-    padding: 30px;
-}
-
-.project-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.8rem;
-    color: #3E2723;
-    margin-bottom: 15px;
-}
-
-.project-location {
-    display: flex;
-    align-items: center;
-    color: #C9A961;
-    font-weight: 600;
-    margin-bottom: 15px;
-    font-size: 1rem;
-}
-
-.project-location::before {
-    content: '📍';
-    margin-right: 8px;
-}
-
-.project-description {
-    color: #666;
-    line-height: 1.8;
-    margin-bottom: 20px;
-}
-
-.project-date {
-    color: #999;
-    font-size: 0.9rem;
-    font-style: italic;
-}
-
-.no-projects {
-    text-align: center;
-    padding: 100px 20px;
-    color: #666;
-}
-
-.no-projects-icon {
-    font-size: 4rem;
-    color: #C9A961;
-    margin-bottom: 20px;
-}
-
-@media (max-width: 768px) {
-    .projects-hero h1 {
-        font-size: 2.5rem;
-    }
-    
-    .projects-grid {
-        grid-template-columns: 1fr;
-        gap: 30px;
-    }
-    
-    .project-image {
-        height: 250px;
-    }
-}
-</style>
-
-<section class="projects-hero">
-    <h1>Our Projects</h1>
-    <p>Showcasing our finest work across the Middle East and beyond. Each project represents our commitment to excellence and quality craftsmanship.</p>
+<!-- Page Header -->
+<section class="page-header" style="margin-top: 80px; background: linear-gradient(135deg, #1A1A1A 0%, #3E2F1F 100%); padding: 60px 0; color: #fff; text-align: center;">
+    <div class="container">
+        <h1 style="font-size: 48px; color: #D4AF37; margin-bottom: 15px;">Our Projects</h1>
+        <p style="font-size: 18px; color: #F5F5DC;">Showcasing Excellence in Stone & Marble Worldwide</p>
+    </div>
 </section>
 
-<div class="projects-container">
-    <?php if (count($projects) > 0): ?>
-        <div class="projects-grid">
+<!-- Projects Grid -->
+<section style="padding: 80px 0;">
+    <div class="container">
+        <?php if (count($projects) > 0): ?>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 35px;">
             <?php foreach ($projects as $project): ?>
-                <div class="project-card">
-                    <img src="<?php echo htmlspecialchars($project['image']); ?>" 
-                         alt="<?php echo htmlspecialchars($project['title_en']); ?>" 
-                         class="project-image">
-                    <div class="project-content">
-                        <h3 class="project-title"><?php echo htmlspecialchars($project['title_en']); ?></h3>
-                        <div class="project-location"><?php echo htmlspecialchars($project['location']); ?></div>
-                        <p class="project-description"><?php echo nl2br(htmlspecialchars($project['description_en'])); ?></p>
-                        <?php if ($project['completed_date']): ?>
-                            <div class="project-date">Completed: <?php echo date('F Y', strtotime($project['completed_date'])); ?></div>
-                        <?php endif; ?>
-                    </div>
+            <div style="background: #fff; box-shadow: 0 5px 20px rgba(0,0,0,0.1); overflow: hidden; transition: all 0.3s;">
+                <div style="height: 280px; overflow: hidden;">
+                    <?php if ($project['main_image']): ?>
+                        <img src="<?= UPLOAD_URL ?>/projects/<?= $project['main_image'] ?>" 
+                             alt="<?= $project['title_en'] ?>"
+                             style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s;">
+                    <?php else: ?>
+                        <img src="assets/images/project-placeholder.jpg" 
+                             alt="<?= $project['title_en'] ?>"
+                             style="width: 100%; height: 100%; object-fit: cover;">
+                    <?php endif; ?>
                 </div>
+                <div style="padding: 30px;">
+                    <h3 style="font-size: 22px; color: #5D4E37; margin-bottom: 12px;"><?= $project['title_en'] ?></h3>
+                    <p style="color: #D4AF37; font-size: 14px; margin-bottom: 12px; font-weight: 600;">
+                        📍 <?= $project['location'] ?><?= $project['country'] ? ', ' . $project['country'] : '' ?>
+                    </p>
+                    <?php if ($project['description_en']): ?>
+                    <p style="color: #666; line-height: 1.6; margin-bottom: 15px;">
+                        <?= substr($project['description_en'], 0, 150) ?>...
+                    </p>
+                    <?php endif; ?>
+                    <?php if ($project['project_date']): ?>
+                    <p style="color: #999; font-size: 13px;">
+                        📅 <?= date('F Y', strtotime($project['project_date'])) ?>
+                    </p>
+                    <?php endif; ?>
+                </div>
+            </div>
             <?php endforeach; ?>
         </div>
-    <?php else: ?>
-        <div class="no-projects">
-            <div class="no-projects-icon">🏛️</div>
-            <h2>No Projects Yet</h2>
-            <p>Our showcase projects will be displayed here soon.</p>
+        
+        <!-- Pagination -->
+        <?php if ($total_pages > 1): ?>
+        <div style="margin-top: 60px; text-align: center;">
+            <div style="display: inline-flex; gap: 10px;">
+                <?php for ($i = 1; $i <= $total_pages; $i++): ?>
+                <a href="?page=<?= $i ?>" 
+                   style="padding: 10px 20px; background: <?= $i == $page ? '#D4AF37' : '#fff' ?>; color: <?= $i == $page ? '#1A1A1A' : '#666' ?>; border: 2px solid #D4AF37; text-decoration: none; font-weight: 600;">
+                    <?= $i ?>
+                </a>
+                <?php endfor; ?>
+            </div>
         </div>
-    <?php endif; ?>
-</div>
+        <?php endif; ?>
+        
+        <?php else: ?>
+        <div style="text-align: center; padding: 60px 20px;">
+            <h3 style="font-size: 24px; color: #666;">No projects available yet</h3>
+            <p style="color: #999; margin-top: 10px;">Please check back soon for our latest completed projects</p>
+        </div>
+        <?php endif; ?>
+    </div>
+</section>
 
 <?php require_once 'includes/footer.php'; ?>
