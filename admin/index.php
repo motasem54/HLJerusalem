@@ -1,122 +1,115 @@
 <?php
-require_once '../config.php';
+require_once '../config/config.php';
 
-// Check if user is logged in
+// Check if logged in
 if (!isset($_SESSION['admin_logged_in'])) {
-    header('Location: login.php');
-    exit;
+    redirect(ADMIN_URL . '/login.php');
 }
 
-$admin = $_SESSION['admin_user'];
+require_once 'includes/header.php';
+
+// Get statistics
+$stats = [];
+
+$stmt = $db->query("SELECT COUNT(*) as count FROM categories WHERE is_active = 1");
+$stats['categories'] = $stmt->fetch()['count'];
+
+$stmt = $db->query("SELECT COUNT(*) as count FROM products WHERE is_active = 1");
+$stats['products'] = $stmt->fetch()['count'];
+
+$stmt = $db->query("SELECT COUNT(*) as count FROM projects WHERE is_active = 1");
+$stats['projects'] = $stmt->fetch()['count'];
+
+$stmt = $db->query("SELECT COUNT(*) as count FROM contact_messages WHERE is_read = 0");
+$stats['messages'] = $stmt->fetch()['count'];
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard - H.L. Jerusalem</title>
-    <link rel="stylesheet" href="../assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/admin.css">
-</head>
-<body class="admin-body">
-    <div class="admin-container">
-        <!-- Sidebar -->
-        <aside class="admin-sidebar">
-            <div class="admin-logo">
-                <h2>H.L. JERUSALEM</h2>
-                <p>Admin Panel</p>
-            </div>
-            
-            <nav class="admin-nav">
-                <a href="index.php" class="active">
-                    <span>☷</span> Dashboard
-                </a>
-                <a href="categories.php">
-                    <span>▦</span> Categories
-                </a>
-                <a href="products.php">
-                    <span>◆</span> Products
-                </a>
-                <a href="projects.php">
-                    <span>✦</span> Projects
-                </a>
-                <a href="settings.php">
-                    <span>⚙</span> Settings
-                </a>
-                <a href="logout.php" style="margin-top: auto;">
-                    <span>✗</span> Logout
-                </a>
-            </nav>
-        </aside>
-        
-        <!-- Main Content -->
-        <main class="admin-main">
-            <header class="admin-header">
-                <h1>Dashboard</h1>
-                <div class="admin-user">
-                    <span>Welcome, <?php echo htmlspecialchars($admin['full_name']); ?></span>
-                </div>
-            </header>
-            
-            <div class="admin-content">
-                <!-- Stats Cards -->
-                <div class="stats-grid">
-                    <?php
-                    // Get statistics
-                    $categories_count = $pdo->query("SELECT COUNT(*) FROM categories WHERE is_active = 1")->fetchColumn();
-                    $products_count = $pdo->query("SELECT COUNT(*) FROM products WHERE is_active = 1")->fetchColumn();
-                    $projects_count = $pdo->query("SELECT COUNT(*) FROM projects WHERE is_active = 1")->fetchColumn();
-                    ?>
-                    
-                    <div class="stat-card">
-                        <div class="stat-icon" style="background: var(--primary-gold);">▦</div>
-                        <div class="stat-info">
-                            <h3><?php echo $categories_count; ?></h3>
-                            <p>Categories</p>
-                        </div>
-                    </div>
-                    
-                    <div class="stat-card">
-                        <div class="stat-icon" style="background: var(--secondary-brown);">◆</div>
-                        <div class="stat-info">
-                            <h3><?php echo $products_count; ?></h3>
-                            <p>Products</p>
-                        </div>
-                    </div>
-                    
-                    <div class="stat-card">
-                        <div class="stat-icon" style="background: var(--primary-brown);">✦</div>
-                        <div class="stat-info">
-                            <h3><?php echo $projects_count; ?></h3>
-                            <p>Projects</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Quick Actions -->
-                <div class="quick-actions">
-                    <h2>Quick Actions</h2>
-                    <div class="actions-grid">
-                        <a href="categories.php?action=add" class="action-btn">
-                            <span>+</span>
-                            <p>Add Category</p>
-                        </a>
-                        <a href="products.php?action=add" class="action-btn">
-                            <span>+</span>
-                            <p>Add Product</p>
-                        </a>
-                        <a href="projects.php?action=add" class="action-btn">
-                            <span>+</span>
-                            <p>Add Project</p>
-                        </a>
-                        <a href="../index.php" target="_blank" class="action-btn">
-                            <span>👁</span>
-                            <p>View Website</p>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </main>
+
+<div class="dashboard-content">
+    <div class="page-header">
+        <h1>لوحة التحكم الرئيسية</h1>
+        <p>مرحباً <?= $_SESSION['admin_name'] ?></p>
     </div>
-</body>
-</html>
+    
+    <div class="stats-grid">
+        <div class="stat-card">
+            <div class="stat-icon">📦</div>
+            <div class="stat-info">
+                <h3><?= $stats['categories'] ?></h3>
+                <p>أقسام الرخام</p>
+            </div>
+            <a href="categories.php" class="stat-link">عرض الكل</a>
+        </div>
+        
+        <div class="stat-card">
+            <div class="stat-icon">🏛️</div>
+            <div class="stat-info">
+                <h3><?= $stats['products'] ?></h3>
+                <p>المنتجات</p>
+            </div>
+            <a href="products.php" class="stat-link">عرض الكل</a>
+        </div>
+        
+        <div class="stat-card">
+            <div class="stat-icon">🏗️</div>
+            <div class="stat-info">
+                <h3><?= $stats['projects'] ?></h3>
+                <p>المشاريع</p>
+            </div>
+            <a href="projects.php" class="stat-link">عرض الكل</a>
+        </div>
+        
+        <div class="stat-card">
+            <div class="stat-icon">✉️</div>
+            <div class="stat-info">
+                <h3><?= $stats['messages'] ?></h3>
+                <p>رسائل جديدة</p>
+            </div>
+            <a href="messages.php" class="stat-link">عرض الكل</a>
+        </div>
+    </div>
+    
+    <div class="recent-section">
+        <h2>آخر المنتجات المضافة</h2>
+        <div class="table-responsive">
+            <table class="admin-table">
+                <thead>
+                    <tr>
+                        <th>الاسم</th>
+                        <th>القسم</th>
+                        <th>النوع</th>
+                        <th>تاريخ الإضافة</th>
+                        <th>الحالة</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    $stmt = $db->query("
+                        SELECT p.*, c.name_ar as category_name 
+                        FROM products p 
+                        LEFT JOIN categories c ON p.category_id = c.id 
+                        ORDER BY p.created_at DESC 
+                        LIMIT 5
+                    ");
+                    $recent_products = $stmt->fetchAll();
+                    
+                    foreach ($recent_products as $product):
+                    ?>
+                    <tr>
+                        <td><?= $product['name_en'] ?></td>
+                        <td><?= $product['category_name'] ?></td>
+                        <td><?= $product['product_type'] ?></td>
+                        <td><?= date('Y-m-d', strtotime($product['created_at'])) ?></td>
+                        <td>
+                            <span class="badge <?= $product['is_active'] ? 'badge-success' : 'badge-danger' ?>">
+                                <?= $product['is_active'] ? 'نشط' : 'غير نشط' ?>
+                            </span>
+                        </td>
+                    </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<?php require_once 'includes/footer.php'; ?>
