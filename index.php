@@ -1,203 +1,293 @@
-<?php require_once 'config.php'; ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo SITE_NAME; ?> - Premium Natural Stone from Palestine</title>
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
-</head>
-<body>
-    <!-- Header -->
-    <header>
-        <nav class="navbar">
-            <div class="logo-container">
-                <img src="assets/images/logo.png" alt="H.L. Jerusalem Logo" class="logo">
-                <span class="company-name">H.L. JERUSALEM</span>
-            </div>
-            <ul class="nav-menu">
-                <li><a href="#home" class="active">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#products">Products</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+<?php
+require_once 'config/config.php';
+require_once 'includes/header.php';
+?>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="hero-content">
-            <h1>EXCEPTIONAL NATURAL STONE</h1>
-            <p>Since 1979, we've been crafting excellence in Jerusalem Gold Stone and premium marble products for discerning clients worldwide</p>
-            <a href="#products" class="cta-button">Explore Our Collection</a>
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <img src="assets/images/logo.png" alt="H.L. Jerusalem Logo" class="hero-logo">
+        <h1 class="hero-title">H.L. JERUSALEM</h1>
+        <p class="hero-subtitle">Stone & Marble Company</p>
+        <p class="hero-tagline">Premium Natural Stone Since 1979</p>
+        <a href="#products" class="btn-gold">Explore Products</a>
+    </div>
+    <div class="scroll-indicator">
+        <span></span>
+    </div>
+</section>
+
+<!-- About Section -->
+<section class="about-section" id="about">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">About H.L. Jerusalem</h2>
+            <div class="title-divider"></div>
         </div>
-    </section>
-
-    <!-- About Section -->
-    <section class="section" id="about">
-        <h2 class="section-title">About H.L. Jerusalem</h2>
-        <p class="section-subtitle">Leading the natural stone industry since 1979</p>
-        
         <div class="about-content">
             <div class="about-text">
-                <h3>Heritage of Excellence</h3>
-                <p>Incorporated in 1979, H.L. Jerusalem Stone and Marble is ranked among the biggest companies in producing and manufacturing the beautiful Jerusalem gold stone in Palestine. Founded in Hebron, one of the oldest cities in the West Bank, we started as a small family business.</p>
-                
-                <p>Our products including Blocks, Slabs, Tiles, and Cut to size can be tailored to your needs with polished, honed, sandblasted, bush-hammered, light, rough, chiseled and flamed finishes, as well as various types of antique and tumbled finishes.</p>
-                
-                <p>Our natural stone colors range from white to cream and from red to grey and yellow, offering endless possibilities for architectural excellence.</p>
+                <p class="lead-text">
+                    Incorporated in 1979, H.L. Jerusalem Stone and Marble is ranked among the biggest companies 
+                    in producing and manufacturing the beautiful Jerusalem gold stone in Palestine.
+                </p>
+                <p>
+                    Founded in Hebron, one of the oldest cities in the West Bank, Palestine, as a small family business, 
+                    we have grown to become a leading force in the natural stone industry.
+                </p>
+                <p>
+                    We believe in quality and mutual benefit by providing the most competitive prices in the world market 
+                    for top-quality products. We're not just a company for manufacturing and exporting stones and marble; 
+                    we're committed to supporting the Palestinian economy.
+                </p>
             </div>
-            <div>
-                <img src="assets/images/about-image.jpg" alt="H.L. Jerusalem Stone" class="about-image">
+            <div class="about-stats">
+                <div class="stat-item">
+                    <span class="stat-number">1979</span>
+                    <span class="stat-label">Established</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">20,000</span>
+                    <span class="stat-label">m² Monthly Production</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">3</span>
+                    <span class="stat-label">International Branches</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">5</span>
+                    <span class="stat-label">Italian Production Lines</span>
+                </div>
             </div>
         </div>
+    </div>
+</section>
 
-        <!-- Stats -->
-        <div class="stats-container">
-            <div class="stat-item">
-                <div class="stat-number">1979</div>
-                <div class="stat-label">Established</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number">990K</div>
-                <div class="stat-label">m² Quarry Area</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number">25K</div>
-                <div class="stat-label">m³ Annual Production</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number">20K</div>
-                <div class="stat-label">m² Monthly Output</div>
-            </div>
+<!-- Products Section -->
+<section class="products-section" id="products">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Our Products</h2>
+            <div class="title-divider"></div>
+            <p class="section-description">
+                Our products can be tailored to your needs in various finishes including polished, honed, 
+                sandblasted, bush-hammered, and antique/tumbled finish.
+            </p>
         </div>
-    </section>
-
-    <!-- Global Presence Section -->
-    <section class="section" style="background: var(--white);">
-        <h2 class="section-title">Global Presence</h2>
-        <p class="section-subtitle">Expanding our excellence across continents</p>
         
-        <div class="about-content">
-            <div class="about-text">
-                <h3>International Investments</h3>
-                <p>Since we believe in quality and mutual benefit by providing the most competitive price in the world market for top quality products, we have entered different important markets:</p>
-                
-                <p><strong style="color: var(--primary-gold);">Korea:</strong> Through our investment company H.L Jerusalem Sara</p>
-                <p><strong style="color: var(--primary-gold);">Turkey:</strong> Through our investment company H.L. Jerusalem Madencilik, operating one of our biggest quarries (990,000 m²) with beautiful cream color range</p>
-                <p><strong style="color: var(--primary-gold);">Jordan:</strong> Through our investment company H.L. Jerusalem Tala Bay</p>
-                
-                <p>We survive by creating successful partnerships with our clients all over the world, supported by advanced technologies and five Italian production lines managed by our professional employees.</p>
+        <div class="products-grid">
+            <?php
+            $stmt = $db->prepare("SELECT * FROM categories WHERE is_active = 1 ORDER BY display_order ASC LIMIT 4");
+            $stmt->execute();
+            $categories = $stmt->fetchAll();
+            
+            foreach ($categories as $category):
+            ?>
+            <div class="product-card">
+                <div class="product-image">
+                    <?php if ($category['image']): ?>
+                        <img src="<?= UPLOAD_URL ?>/categories/<?= $category['image'] ?>" alt="<?= $category['name_en'] ?>">
+                    <?php else: ?>
+                        <img src="assets/images/placeholder.jpg" alt="<?= $category['name_en'] ?>">
+                    <?php endif; ?>
+                    <div class="product-overlay">
+                        <a href="category.php?slug=<?= $category['slug'] ?>" class="btn-view">View Products</a>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title"><?= $category['name_en'] ?></h3>
+                    <p class="product-description"><?= substr($category['description_en'], 0, 100) ?>...</p>
+                </div>
             </div>
-            <div>
-                <img src="assets/images/global-map.jpg" alt="Global Presence" class="about-image">
+            <?php endforeach; ?>
+        </div>
+        
+        <div class="text-center">
+            <a href="products.php" class="btn-outline-gold">View All Products</a>
+        </div>
+    </div>
+</section>
+
+<!-- Product Types -->
+<section class="types-section">
+    <div class="container">
+        <div class="types-grid">
+            <div class="type-item">
+                <div class="type-icon">🗻</div>
+                <h3>Blocks</h3>
+                <p>Raw stone blocks from our quarries</p>
+            </div>
+            <div class="type-item">
+                <div class="type-icon">📐</div>
+                <h3>Slabs</h3>
+                <p>Cut and polished stone slabs</p>
+            </div>
+            <div class="type-item">
+                <div class="type-icon">⬜</div>
+                <h3>Tiles</h3>
+                <p>Various tile sizes and formats</p>
+            </div>
+            <div class="type-item">
+                <div class="type-icon">✂️</div>
+                <h3>Cut to Size</h3>
+                <p>Custom dimensions on request</p>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Products Section -->
-    <section class="section" id="products">
-        <h2 class="section-title">Our Products</h2>
-        <p class="section-subtitle">Premium natural stone solutions for every project</p>
-        
-        <div class="products-grid" id="productsContainer">
-            <!-- Products will be loaded dynamically -->
+<!-- International Presence -->
+<section class="international-section">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">International Presence</h2>
+            <div class="title-divider"></div>
+            <p class="section-description">
+                We have entered different important markets through strategic investments
+            </p>
         </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section class="section" id="projects" style="background: var(--white);">
-        <h2 class="section-title">Featured Projects</h2>
-        <p class="section-subtitle">Excellence in every installation</p>
         
-        <div class="products-grid" id="projectsContainer">
-            <!-- Projects will be loaded dynamically -->
+        <div class="branches-grid">
+            <div class="branch-card">
+                <div class="branch-flag">🇰🇷</div>
+                <h3>Korea</h3>
+                <p class="branch-name">H.L Jerusalem Sara</p>
+            </div>
+            <div class="branch-card">
+                <div class="branch-flag">🇹🇷</div>
+                <h3>Turkey</h3>
+                <p class="branch-name">H.L. Jerusalem Madencilik</p>
+                <p class="branch-details">990,000 m² quarry | 25,000 m³ annual production</p>
+            </div>
+            <div class="branch-card">
+                <div class="branch-flag">🇯🇴</div>
+                <h3>Jordan</h3>
+                <p class="branch-name">H.L. Jerusalem Tala Bay</p>
+            </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Contact Section -->
-    <section class="section" id="contact">
-        <h2 class="section-title">Contact Us</h2>
-        <p class="section-subtitle">Get in touch with our team</p>
+<!-- Projects Section -->
+<section class="projects-section" id="projects">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Our Projects</h2>
+            <div class="title-divider"></div>
+        </div>
         
-        <div class="about-content" style="margin-top: 3rem;">
-            <div class="about-text">
-                <h3 style="color: var(--primary-gold); margin-bottom: 2rem;">H.L. JERUSALEM STONE & MARBLE</h3>
-                
-                <div style="margin-bottom: 2rem;">
-                    <h4 style="color: var(--primary-brown); margin-bottom: 0.5rem;">ADDRESS</h4>
-                    <p>Ein Sarah St. Hebron, Palestine</p>
+        <div class="projects-grid">
+            <?php
+            $stmt = $db->prepare("SELECT * FROM projects WHERE is_active = 1 ORDER BY display_order ASC LIMIT 6");
+            $stmt->execute();
+            $projects = $stmt->fetchAll();
+            
+            if (count($projects) > 0):
+                foreach ($projects as $project):
+            ?>
+            <div class="project-card">
+                <div class="project-image">
+                    <?php if ($project['main_image']): ?>
+                        <img src="<?= UPLOAD_URL ?>/projects/<?= $project['main_image'] ?>" alt="<?= $project['title_en'] ?>">
+                    <?php else: ?>
+                        <img src="assets/images/project-placeholder.jpg" alt="<?= $project['title_en'] ?>">
+                    <?php endif; ?>
+                </div>
+                <div class="project-info">
+                    <h3><?= $project['title_en'] ?></h3>
+                    <p class="project-location">📍 <?= $project['location'] ?>, <?= $project['country'] ?></p>
+                </div>
+            </div>
+            <?php 
+                endforeach;
+            else:
+            ?>
+            <div class="no-projects">
+                <p>Projects will be showcased here soon.</p>
+            </div>
+            <?php endif; ?>
+        </div>
+        
+        <?php if (count($projects) > 0): ?>
+        <div class="text-center">
+            <a href="projects.php" class="btn-outline-gold">View All Projects</a>
+        </div>
+        <?php endif; ?>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section class="contact-section" id="contact">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Contact Us</h2>
+            <div class="title-divider"></div>
+        </div>
+        
+        <div class="contact-content">
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon">📍</div>
+                    <div>
+                        <h4>Address</h4>
+                        <p>Ein Sarah St. Hebron, Palestine</p>
+                    </div>
                 </div>
                 
-                <div style="margin-bottom: 2rem;">
-                    <h4 style="color: var(--primary-brown); margin-bottom: 0.5rem;">EMAIL</h4>
-                    <p><a href="mailto:info@palstone.com" style="color: var(--primary-gold);">info@palstone.com</a></p>
+                <div class="contact-item">
+                    <div class="contact-icon">📧</div>
+                    <div>
+                        <h4>Email</h4>
+                        <p><a href="mailto:info@palstone.com">info@palstone.com</a></p>
+                    </div>
                 </div>
                 
-                <div style="margin-bottom: 2rem;">
-                    <h4 style="color: var(--primary-brown); margin-bottom: 0.5rem;">PHONE & FAX</h4>
-                    <p>Tel: +970 2 2291403</p>
-                    <p>Fax: +970 2 2253133</p>
+                <div class="contact-item">
+                    <div class="contact-icon">📞</div>
+                    <div>
+                        <h4>Phone</h4>
+                        <p>+970 2 2291403</p>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">📠</div>
+                    <div>
+                        <h4>Fax</h4>
+                        <p>+970 2 2253133</p>
+                    </div>
+                </div>
+                
+                <div class="management-info">
+                    <h4>Management</h4>
+                    <p><strong>General Manager:</strong><br>Mr. Fahed Ghaith: 00970-599373163</p>
+                    <p><strong>Director Manager:</strong><br>Mr. Nimer Ghaith: 00972-598881778</p>
+                    <p><strong>Marketing Manager:</strong><br>Miss. Ola Ghaith: 00970-595188753</p>
                 </div>
             </div>
             
-            <div>
-                <h3 style="color: var(--primary-brown); margin-bottom: 2rem;">Management Team</h3>
-                
-                <div style="background: var(--light-gold); padding: 1.5rem; border-radius: 8px; margin-bottom: 1.5rem;">
-                    <h4 style="color: var(--primary-brown);">GENERAL MANAGER</h4>
-                    <p style="color: var(--secondary-brown); font-weight: 600;">MR. FAHED GHAITH</p>
-                    <p style="color: var(--secondary-brown);">+970-599373163</p>
-                </div>
-                
-                <div style="background: var(--light-gold); padding: 1.5rem; border-radius: 8px; margin-bottom: 1.5rem;">
-                    <h4 style="color: var(--primary-brown);">DIRECTOR MANAGER</h4>
-                    <p style="color: var(--secondary-brown); font-weight: 600;">MR. NIMER GHAITH</p>
-                    <p style="color: var(--secondary-brown);">+972-598881778</p>
-                </div>
-                
-                <div style="background: var(--light-gold); padding: 1.5rem; border-radius: 8px;">
-                    <h4 style="color: var(--primary-brown);">MARKETING MANAGER</h4>
-                    <p style="color: var(--secondary-brown); font-weight: 600;">MISS. OLA GHAITH</p>
-                    <p style="color: var(--secondary-brown);">+970-595188753</p>
-                </div>
+            <div class="contact-form">
+                <form method="POST" action="process-contact.php" id="contactForm">
+                    <div class="form-group">
+                        <input type="text" name="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" name="phone" placeholder="Phone Number">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="subject" placeholder="Subject" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn-gold">Send Message</button>
+                </form>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>H.L. JERUSALEM</h3>
-                <p>Premium natural stone products from Palestine since 1979. We are not just a company for manufacturing and exporting stones and marble, we are looking forward to support the Palestinian economy.</p>
-            </div>
-            
-            <div class="footer-section">
-                <h3>Quick Links</h3>
-                <p><a href="#home">Home</a></p>
-                <p><a href="#about">About</a></p>
-                <p><a href="#products">Products</a></p>
-                <p><a href="#projects">Projects</a></p>
-                <p><a href="#contact">Contact</a></p>
-            </div>
-            
-            <div class="footer-section">
-                <h3>Contact Info</h3>
-                <p>Ein Sarah St. Hebron, Palestine</p>
-                <p>Email: info@palstone.com</p>
-                <p>Tel: +970 2 2291403</p>
-                <p>Fax: +970 2 2253133</p>
-            </div>
-        </div>
-        
-        <div class="footer-bottom">
-            <p>&copy; <?php echo date('Y'); ?> H.L. Jerusalem Stone & Marble. All rights reserved.</p>
-        </div>
-    </footer>
-
-    <script src="assets/js/main.js"></script>
-</body>
-</html>
+<?php require_once 'includes/footer.php'; ?>
